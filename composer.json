@@ -1,0 +1,18 @@
+{
+    "name": "pjehan/acfoop",
+    "description": "ACF with object-oriented programming",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Pjehan\\Acfoop\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "pjehan",
+            "email": "pierre.jehan@gmail.com"
+        }
+    ],
+    "require": {}
+}
