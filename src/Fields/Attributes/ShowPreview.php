@@ -8,7 +8,7 @@ use Pjehan\Acfoop\Fields\Field;
 
 trait ShowPreview
 {
-    private bool $show_preview;
+    private bool $show_preview = false;
 
     /**
      * @return bool
