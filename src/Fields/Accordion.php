@@ -4,12 +4,9 @@
 namespace Pjehan\Acfoop\Fields;
 
 
-use Pjehan\Acfoop\Fields\Attributes\Instructions;
 
 class Accordion extends Field
 {
-
-    use Instructions;
 
     private bool $open = false;
     private bool $multiExpand = false;
@@ -59,7 +56,6 @@ class Accordion extends Field
     {
         return array_merge(
             parent::toArray(),
-            $this->instructionsToArray(),
             ['open' => $this->isOpen()],
             ['multi_expand' => $this->isMultiExpand()]
         );

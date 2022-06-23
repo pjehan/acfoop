@@ -4,12 +4,8 @@
 namespace Pjehan\Acfoop\Fields;
 
 
-use Pjehan\Acfoop\Fields\Attributes\Instructions;
-
 class Tab extends Field
 {
-
-    use Instructions;
 
     public const PLACEMENT_TOP = 'top';
     public const PLACEMENT_LEFT = 'left';
@@ -62,7 +58,6 @@ class Tab extends Field
     {
         return array_merge(
             parent::toArray(),
-            $this->instructionsToArray(),
             ['placement' => $this->getPlacement()]
         );
     }

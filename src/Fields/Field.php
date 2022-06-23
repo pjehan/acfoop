@@ -5,11 +5,13 @@ namespace Pjehan\Acfoop\Fields;
 
 
 use Pjehan\Acfoop\Fields\Attributes\ConditionalLogic;
+use Pjehan\Acfoop\Fields\Attributes\Instructions;
 
 abstract class Field
 {
 
     use ConditionalLogic;
+    use Instructions;
 
     private string $key;
     private string $name;
@@ -131,7 +133,8 @@ abstract class Field
                 'label' => $this->getLabel(),
                 'type' => $this->getType()
             ],
-            $this->conditionalLogicGroupsToArray()
+            $this->conditionalLogicGroupsToArray(),
+            $this->instructionsToArray()
         );
     }
 
