@@ -28,9 +28,9 @@ trait ConditionalLogic
 
     /**
      * @param ConditionalLogicGroup[] $conditional_logic_groups
-     * @return ConditionalLogic
+     * @return Field|ConditionalLogic
      */
-    public function setConditionalLogicGroups(array $conditional_logic_groups): ConditionalLogic
+    public function setConditionalLogicGroups(array $conditional_logic_groups): self
     {
         $this->conditional_logic_groups = $conditional_logic_groups;
         return $this;
