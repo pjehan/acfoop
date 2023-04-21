@@ -10,8 +10,8 @@ use Pjehan\Acfoop\Fields\Attributes\ReturnFormat;
 
 class Image extends Field
 {
-    use ReturnFormat;
     use Required;
+    use ReturnFormat;
 
     public function getType(): string
     {
@@ -22,7 +22,8 @@ class Image extends Field
     {
         return array_merge(
             parent::toArray(),
-            $this->returnFormatToArray()
+            $this->requiredToArray(),
+            $this->returnFormatToArray(),
         );
     }
 }
