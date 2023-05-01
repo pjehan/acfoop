@@ -101,7 +101,7 @@ class FieldGroup extends Field
     {
         $locations = [];
         foreach ($this->getLocations() as $location) {
-            $locations[] = $location->toArray();
+            $locations[] = [$location->toArray()];
         }
         return $locations;
     }
@@ -181,7 +181,7 @@ class FieldGroup extends Field
             'title' => $this->getLabel(),
             'style' => $this->getStyle(),
             'hide_on_screen' => $this->getHiddenElements(),
-            'location' => [$this->getArrayLocations()],
+            'location' => $this->getArrayLocations(),
             'fields' => $this->getArrayFields()
         ];
     }
