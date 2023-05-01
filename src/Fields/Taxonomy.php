@@ -6,6 +6,7 @@ namespace Pjehan\Acfoop\Fields;
 
 use Pjehan\Acfoop\Fields\Attributes\FieldType;
 use Pjehan\Acfoop\Fields\Attributes\MinMax;
+use Pjehan\Acfoop\Fields\Attributes\Multiple;
 use Pjehan\Acfoop\Fields\Attributes\ReturnFormat;
 
 class Taxonomy extends Field
@@ -13,6 +14,7 @@ class Taxonomy extends Field
     use MinMax;
     use FieldType;
     use ReturnFormat;
+    use Multiple;
 
     private string $taxonomy;
 
@@ -52,6 +54,7 @@ class Taxonomy extends Field
             $this->minMaxToArray(),
             $this->fieldTypeToArray(),
             $this->returnFormatToArray(),
+            $this->multipleToArray(),
             [
                 'taxonomy' => $this->getTaxonomy()
             ]
