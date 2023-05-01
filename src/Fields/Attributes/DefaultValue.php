@@ -8,7 +8,7 @@ use Pjehan\Acfoop\Fields\Field;
 
 trait DefaultValue
 {
-    private ?string $default_value;
+    private ?string $default_value = '';
 
     /**
      * @return string
