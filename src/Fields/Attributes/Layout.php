@@ -25,7 +25,7 @@ trait Layout
      */
     public function setLayout(string $layout): Field
     {
-        if (!in_array($layout, ['block', 'row', 'table'])) {
+        if (!in_array($layout, ['block', 'row', 'table', 'vertical', 'horizontal'])) {
             throw new InvalidArgumentException("Invalid argument layout [$layout].");
         }
 
