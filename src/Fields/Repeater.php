@@ -5,12 +5,14 @@ namespace Pjehan\Acfoop\Fields;
 
 
 use Pjehan\Acfoop\Fields\Attributes\Layout;
+use Pjehan\Acfoop\Fields\Attributes\MinMax;
 use Pjehan\Acfoop\Fields\Attributes\SubFields;
 
 class Repeater extends Field
 {
     use SubFields;
     use Layout;
+    use MinMax;
 
     public function getType(): string
     {
@@ -22,7 +24,8 @@ class Repeater extends Field
         return array_merge(
             parent::toArray(),
             $this->subFieldsToArray(),
-            $this->layoutToArray()
+            $this->layoutToArray(),
+            $this->minMaxToArray()
         );
     }
 }
