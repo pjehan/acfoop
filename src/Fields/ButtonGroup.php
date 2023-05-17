@@ -8,6 +8,7 @@ use Pjehan\Acfoop\Fields\Attributes\AllowNull;
 use Pjehan\Acfoop\Fields\Attributes\Choices;
 use Pjehan\Acfoop\Fields\Attributes\DefaultValue;
 use Pjehan\Acfoop\Fields\Attributes\Required;
+use Pjehan\Acfoop\Fields\Attributes\ReturnFormat;
 
 class ButtonGroup extends Field
 {
@@ -16,6 +17,7 @@ class ButtonGroup extends Field
     use Required;
     use AllowNull;
     use DefaultValue;
+    use ReturnFormat;
 
     public function getType(): string
     {
@@ -29,7 +31,8 @@ class ButtonGroup extends Field
             $this->choicesToArray(),
             $this->requiredToArray(),
             $this->allowNullToArray(),
-            $this->defaultValueToArray()
+            $this->defaultValueToArray(),
+            $this->returnFormatToArray()
         );
     }
 
