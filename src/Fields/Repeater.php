@@ -16,6 +16,7 @@ class Repeater extends Field
 
     private bool $pagination = false;
     private int $rowsPerPage = 20;
+    private string $buttonLabel = 'Add Row';
 
     public function getType(): string
     {
@@ -58,6 +59,24 @@ class Repeater extends Field
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getButtonLabel(): string
+    {
+        return $this->buttonLabel;
+    }
+
+    /**
+     * @param string $buttonLabel
+     * @return Repeater
+     */
+    public function setButtonLabel(string $buttonLabel): Repeater
+    {
+        $this->buttonLabel = $buttonLabel;
+        return $this;
+    }
+
     public function toArray(): array
     {
         return array_merge(
@@ -68,6 +87,7 @@ class Repeater extends Field
             [
                 'pagination' => $this->isPagination() ? 1 : 0,
                 'rows_per_page' => $this->getRowsPerPage(),
+                'button_label' => $this->getButtonLabel(),
             ]
         );
     }
