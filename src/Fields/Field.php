@@ -17,6 +17,7 @@ abstract class Field
     private string $name;
     private string $label;
     private ?Field $parent_field = null;
+    private bool $concatenate_keys = true;
 
     /**
      * Field constructor.
@@ -117,6 +118,24 @@ abstract class Field
     }
 
     /**
+     * @return bool
+     */
+    public function isConcatenateKeys(): bool
+    {
+        return $this->concatenate_keys;
+    }
+
+    /**
+     * @param bool $concatenate_keys
+     * @return Field
+     */
+    public function setConcatenateKeys(bool $concatenate_keys): Field
+    {
+        $this->concatenate_keys = $concatenate_keys;
+        return $this;
+    }
+
+    /**
      * @return string
      */
     abstract public function getType(): string;
@@ -128,7 +147,7 @@ abstract class Field
     {
         return array_merge(
             [
-                'key' => $this->getFullKey(),
+                'key' => $this->isConcatenateKeys() ? $this->getFullKey() : $this->getKey(),
                 'name' => $this->getName(),
                 'label' => $this->getLabel(),
                 'type' => $this->getType()
