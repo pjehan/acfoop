@@ -9,74 +9,78 @@ use Pjehan\Acfoop\Fields\Attributes\Required;
 
 class FlexibleContent extends Field
 {
-	use Required;
-	use MinMax;
+    use Required;
+    use MinMax;
 
-	/** @var FlexibleContentLayout[] $layouts */
-	private array $layouts = [];
-	private string $buttonLabel = 'Add Row';
+    /** @var FlexibleContentLayout[] $layouts */
+    private array $layouts = [];
+    private string $buttonLabel = 'Add Row';
 
     public function getType(): string
     {
         return 'flexible_content';
     }
 
-	/**
-	 * @return array
-	 */
-	public function getLayouts(): array
-	{
-		return $this->layouts;
-	}
+    /**
+     * @return array
+     */
+    public function getLayouts(): array
+    {
+        return $this->layouts;
+    }
 
-	/**
-	 * @param array $layouts
-	 * @return FlexibleContent
-	 */
-	public function setLayouts(array $layouts): FlexibleContent
-	{
-		$this->layouts = $layouts;
-		return $this;
-	}
+    /**
+     * @param array $layouts
+     * @return FlexibleContent
+     */
+    public function setLayouts(array $layouts): FlexibleContent
+    {
+        $this->layouts = $layouts;
+        return $this;
+    }
 
-	/**
-	 * @param FlexibleContentLayout $layout
-	 * @return FlexibleContent
-	 */
-	public function addLayout(FlexibleContentLayout $layout): FlexibleContent
-	{
-		$this->layouts[] = $layout;
-		return $this;
-	}
+    /**
+     * @param FlexibleContentLayout $layout
+     * @return FlexibleContent
+     */
+    public function addLayout(FlexibleContentLayout $layout): FlexibleContent
+    {
+        $this->layouts[] = $layout;
+        return $this;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getButtonLabel(): string
-	{
-		return $this->buttonLabel;
-	}
+    /**
+     * @return string
+     */
+    public function getButtonLabel(): string
+    {
+        return $this->buttonLabel;
+    }
 
-	/**
-	 * @param string $buttonLabel
-	 * @return FlexibleContent
-	 */
-	public function setButtonLabel(string $buttonLabel): FlexibleContent
-	{
-		$this->buttonLabel = $buttonLabel;
-		return $this;
-	}
+    /**
+     * @param string $buttonLabel
+     * @return FlexibleContent
+     */
+    public function setButtonLabel(string $buttonLabel): FlexibleContent
+    {
+        $this->buttonLabel = $buttonLabel;
+        return $this;
+    }
 
     public function toArray(): array
     {
+        $layouts = [];
+        foreach ($this->getLayouts() as $layout) {
+            $layouts[$layout->getKey()] = $layout->toArray();
+        }
         return array_merge(
             parent::toArray(),
-			$this->requiredToArray(),
-			$this->minMaxToArray(),
-			[
-				'layouts' => array_map(static fn(FlexibleContentLayout $layout) => [$layout->getKey() => $layout->toArray()], $this->getLayouts()),
-				'button_label' => $this->getButtonLabel(),
-			]
+            $this->requiredToArray(),
+            $this->minMaxToArray(),
+            [
+                'layouts' => $layouts,
+                'button_label' => $this->getButtonLabel(),
+            ]
         );
     }
 }
