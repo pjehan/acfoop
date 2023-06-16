@@ -4,6 +4,7 @@
 namespace Pjehan\Acfoop\Fields;
 
 
+use Pjehan\Acfoop\Fields\Attributes\AllowNull;
 use Pjehan\Acfoop\Fields\Attributes\Choices;
 use Pjehan\Acfoop\Fields\Attributes\DefaultValue;
 use Pjehan\Acfoop\Fields\Attributes\Required;
@@ -15,6 +16,7 @@ class Select extends Field
     use DefaultValue;
     use ReturnFormat;
     use Required;
+    use AllowNull;
 
     public function getType(): string
     {
@@ -28,7 +30,8 @@ class Select extends Field
             $this->choicesToArray(),
             $this->defaultValueToArray(),
             $this->returnFormatToArray(),
-            $this->requiredToArray()
+            $this->requiredToArray(),
+            $this->allowNullToArray()
         );
     }
 }
