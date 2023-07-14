@@ -24,7 +24,7 @@ class ConditionalLogicCondition
      * @param string $operator
      * @param string $value
      */
-    public function __construct(Field $field, string $operator, string $value)
+    public function __construct(Field $field, string $operator, string $value = '')
     {
         $this->setField($field);
         $this->setOperator($operator);
