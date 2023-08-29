@@ -8,7 +8,7 @@ use Pjehan\Acfoop\Fields\Field;
 
 trait Choices
 {
-    private array $choices;
+    private array $choices = [];
 
     /**
      * @return array
