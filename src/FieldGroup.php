@@ -11,6 +11,9 @@ class FieldGroup extends Field
 
     public const STYLE_DEFAULT = 'default';
     public const STYLE_SEAMLESS = 'seamless';
+    public const POSITION_NORMAL = 'normal';
+    public const POSITION_AFTER_TITLE = 'acf_after_title';
+    public const POSITION_SIDE = 'side';
     public const ELEMENT_PERMALINK = 'permalink';
     public const ELEMENT_CONTENT = 'the_content';
     public const ELEMENT_EXCERPT = 'excerpt';
@@ -33,6 +36,9 @@ class FieldGroup extends Field
 
     /** @var string */
     private string $style = self::STYLE_DEFAULT;
+
+    /** @var string */
+    private string $position = self::POSITION_NORMAL;
 
     /** @var string[] */
     private array $hiddenElements = [];
@@ -147,6 +153,24 @@ class FieldGroup extends Field
     }
 
     /**
+     * @return string
+     */
+    public function getPosition(): string
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param string $position
+     * @return FieldGroup
+     */
+    public function setPosition(string $position): FieldGroup
+    {
+        $this->position = $position;
+        return $this;
+    }
+
+    /**
      * @return string[]
      */
     public function getHiddenElements(): array
@@ -180,6 +204,7 @@ class FieldGroup extends Field
             'key' => $this->getFullKey(),
             'title' => $this->getLabel(),
             'style' => $this->getStyle(),
+            'position' => $this->getPosition(),
             'hide_on_screen' => $this->getHiddenElements(),
             'location' => $this->getArrayLocations(),
             'fields' => $this->getArrayFields()
