@@ -141,6 +141,7 @@ class PostObject extends Field
     public function setAllowNull(bool $allow_null): PostObject
     {
         $this->allow_null = $allow_null;
+        return $this;
     }
 
     public function getType(): string
