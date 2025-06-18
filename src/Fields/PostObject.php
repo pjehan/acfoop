@@ -16,6 +16,7 @@ class PostObject extends Field
     private array $post_status = [];
     private array $taxonomies = [];
     private bool $multiple = false;
+    private bool $allow_null = false;
 
     public function __construct(string $key, string $label, ?string $name = null)
     {
@@ -125,6 +126,23 @@ class PostObject extends Field
         return $this;
     }
 
+    /**
+     * @return bool
+     */
+    public function isAllowNull(): bool
+    {
+        return $this->allow_null;
+    }
+
+    /**
+     * @param bool $allow_null
+     * @return PostObject
+     */
+    public function setAllowNull(bool $allow_null): PostObject
+    {
+        $this->allow_null = $allow_null;
+    }
+
     public function getType(): string
     {
         return 'post_object';
@@ -141,6 +159,7 @@ class PostObject extends Field
                 'post_status' => $this->getPostStatus(),
                 'taxonomy' => $this->getTaxonomies(),
                 'multiple' => $this->isMultiple(),
+                'allow_null' => $this->isAllowNull(),
             ]
         );
     }
